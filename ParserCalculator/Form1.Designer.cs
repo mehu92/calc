@@ -18,7 +18,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -29,6 +28,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SmartCalculator));
+            System.Windows.Forms.TextBox textBox1;
             this.txtScreen = new System.Windows.Forms.TextBox();
             this.btnEnter = new System.Windows.Forms.PictureBox();
             this.btnSeven = new System.Windows.Forms.PictureBox();
@@ -55,6 +55,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnEnter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSeven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOne)).BeginInit();
@@ -83,13 +84,14 @@
             // 
             // txtScreen
             // 
-            this.txtScreen.AcceptsReturn = true;
-            this.txtScreen.AcceptsTab = true;
             this.txtScreen.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.txtScreen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtScreen.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             resources.ApplyResources(this.txtScreen, "txtScreen");
             this.txtScreen.Name = "txtScreen";
+            this.txtScreen.TabStop = false;
+            this.txtScreen.TextChanged += new System.EventHandler(this.updateCursor);
+            this.txtScreen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterPress);
             // 
             // btnEnter
             // 
@@ -287,11 +289,20 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
+            // textBox1
+            // 
+            textBox1.BackColor = System.Drawing.Color.DimGray;
+            textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            // 
             // SmartCalculator
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.DimGray;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(textBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSmartFace);
