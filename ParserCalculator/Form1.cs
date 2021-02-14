@@ -36,14 +36,26 @@ namespace ParserCalculator                                                      
                 int nWidthEllipse,                                                          /**/
                 int nHeightEllipse                                                          /**/
             );                                                                              /*___________________________________*/
+        private static readonly Timer Timer = new Timer();                                  /* Timer for Welcome Message         */
         public SmartCalculator()                                                            /*INIT                               */
         {                                                                                   /**/
             InitializeComponent();                                                          /**/
             this.FormBorderStyle = FormBorderStyle.None;                                    /**/
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));/**/
+            Timer.Tick += TimerEventProcessor;                                              /**/
+            Timer.Interval = 3000;                                                          /**/
+            Timer.Start();                                                                  /**/
+            String welcomeMsg = "Hello :)@Click the face!";                                 /*Timed welcome message              */
+            welcomeMsg = welcomeMsg.Replace("@", System.Environment.NewLine);               /**/
+            txtScreen.Text = welcomeMsg;                                                    /**/
         }                                                                                   /*___________________________________*/
-        public void Enter_Click(object sender, EventArgs e)                                /*Buttons and stuff                  */
+        private void TimerEventProcessor(object myObject, EventArgs myEventArgs)            /* Timed screen wipe                 */
         {                                                                                   /**/
+            Timer.Stop();                                                                   /**/
+            txtScreen.Text = "";                                                            /**/
+        }                                                                                   /*___________________________________*/
+        public void Enter_Click(object sender, EventArgs e)                                 /*Buttons and stuff                  */
+        {                                                                                   /*___________________________________*/
             Expression e1 = new Expression(txtScreen.Text);                                 /*Enter                              */
             double Resultat = e1.calculate();                                               /**/
             txtScreen.Text = Resultat.ToString();                                           /**/
@@ -172,13 +184,13 @@ namespace ParserCalculator                                                      
         {                                                                                   /**/
             txtScreen.Select(txtScreen.Text.Length, 0);                                     /**/
         }                                                                                   /*___________________________________*/
-        private void EnterPress(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Return) {
-                Expression e1 = new Expression(txtScreen.Text);
-                double Resultat = e1.calculate();
-                txtScreen.Text = Resultat.ToString();
-                txtScreen.Select(txtScreen.Text.Length, 0);
+        private void EnterPress(object sender, KeyEventArgs e)                              /*Enable enter key for calculation   */
+        {                                                                                   /**/
+            if (e.KeyCode == Keys.Return) {                                                 /**/
+                Expression e1 = new Expression(txtScreen.Text);                             /**/
+                double Resultat = e1.calculate();                                           /**/
+                txtScreen.Text = Resultat.ToString();                                       /**/
+                txtScreen.Select(txtScreen.Text.Length, 0);                                 /*____________________________________*/
             }
         }
     }

@@ -119,88 +119,91 @@
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>Operators:
-+	Addition
-- 	Subtraction
-*	Multiplication
-/	Division
-^	Exponentiation
-!	Factorial
-#	Modulo function
++		Addition
+- 		Subtraction
+*		Multiplication
+/		Division
+^		Exponentiation
+!		Factorial
+#		Modulo function
 Binary Relations:
-=	Equality
-==	Equality
-&lt;&gt;	Inequation
-~=	Inequation
-!=	Inequation
-&lt;	Lower than
-&gt;	Greater than
-&lt;=	Lower or equal
-&gt;=	Greater or equal
+=		Equality
+==		Equality
+&lt;&gt;		Inequation
+~=		Inequation
+!=		Inequation
+&lt;		Lower than
+&gt;		Greater than
+&lt;=		Lower or equal
+&gt;=		Greater or equal
 Boolean Operators:
-&amp;	Logical AND
-&amp;&amp;	Logical AND
-/\	Logical AND
-~&amp;	NAND - Sheffer stroke
-~&amp;&amp;	NAND - Sheffer stroke
-~/\	NAND - Sheffer stroke
-|	Logical OR
-||	Logical OR
-\/	Logical OR
-~|	Logical NOR
-~||	Logical NOR
-~\/	Logical NOR
-(+)	Exclusive or XOR
---&gt; 	Implication
-&lt;-- 	Converse implication
--/&gt; 	Material nonimplication
-&lt;/- 	Converse nonimplication
-&lt;-&gt; 	Logical biconditional EQV
-~ 	Negation
+&amp;		Logical AND
+&amp;&amp;		Logical AND
+/\		Logical AND
+~&amp;		NAND - Sheffer stroke
+~&amp;&amp;		NAND - Sheffer stroke
+~/\		NAND - Sheffer stroke
+|		Logical OR
+||		Logical OR
+\/		Logical OR
+~|		Logical NOR
+~||		Logical NOR
+~\/		Logical NOR
+(+)		Exclusive or XOR
+--&gt; 		Implication
+&lt;-- 		Converse implication
+-/&gt; 		Material nonimplication
+&lt;/- 		Converse nonimplication
+&lt;-&gt; 		Logical bicondit EQV
+~ 		Negation
 Bitwise Operators
- @~ 	Bitwise unary complement
- @% 	Bitwise AND
- @^ 	Bitwise exclusive OR
- @| 	Bitwise inclusive OR
+ @~ 		Bitwise unary complement
+ @% 		Bitwise AND
+ @^ 		Bitwise exclusive OR
+ @| 		Bitwise inclusive OR
  @&lt;&lt; 	Signed left shift
  @&gt;&gt; 	Signed right shift
 Unary Functions
- ln 	Natural logarithm (base e)
- log2 	Binary logarithm (base 10)
- floor 	Floor 
- ceil 	Ceiling 
- not 	Negation 
+ ln 		Natural log (base e)
+ log2 		Binary log (base 10)
+ floor 		Floor 
+ ceil 		Ceiling 
+ not 		Negation 
 Trigonometry Functions 
- sin 	Sine 
- cos 	Cosine 
- tan 	Tangent 
- ctan 	Cotangent 
- sec 	Secant 
+ sin 		Sine 
+ cos 		Cosine 
+ tan 		Tangent 
+ ctan 		Cotangent 
+ sec 		Secant 
  csec 	Cosecant 
- asin 	Inverse sine 
+ asin 		Inverse sine 
  acos 	Inverse cosine 
- atan	Inverse tangent 
+ atan		Inverse tangent 
  actan	Inverse cotangent 
- deg 	Radians to degrees 
- rad 	Degrees to radians 
- exp 	Exponential 
- sqrt 	Square root 
- sinh 	Hyperbolic sine 
+ deg 		Radians to degrees 
+ rad 		Degrees to radians 
+ exp 		Exponential 
+ sqrt 		Square root 
+ sinh 		Hyperbolic sine 
  cosh 	Hyperbolic cosine 
- tanh 	Hyperbolic tangent
+ tanh 		Hyperbolic tangent
 Special Numbers
- Bell 	 Bell number
- Luc 	 Lucas number
- Fib 	 Fibonacci number
- harm 	 Harmonic number
- ispr 	 Prime test
- Pi 	 Prime counting
- Ei 	 Exponential integral 
- li	 Logarithmic integral 
- Li 	 Offset logarithmic integral 
- erf 	 Gauss error function
- erfc	 Gauss complementary
- erfinv      Inverse Gauss
- ulp 	 Unit in last place
+ Bell 	 	Bell number
+ Luc 	 	Lucas number
+ Fib 	 	Fibonacci number
+ harm 	Harmonic number
+ ispr 	 	Prime test
+ Pi 	 	Prime counting
+ Ei 	 	Exponential integral 
+ li	 	Logarithmic integral 
+ Li 	 	Offset logarithmic integral 
+ erf 	 	Gauss error function
+ erfc	 	Gauss complementary
+ erfinv      	Inverse Gauss
+ ulp 	 	Unit in last place
+
+
+
 
 </value>
   </data>
