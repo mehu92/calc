@@ -5303,6 +5303,9 @@
         ANALAADSSwAA3/sAANALAADH4wAAx+MAAMfjAADH4wAA0AsAAM/zAADAAwAA
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>

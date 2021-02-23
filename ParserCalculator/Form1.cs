@@ -133,7 +133,7 @@ namespace ParserCalculator                                                      
         }                                                                                   /*___________________________________*/
         private void btnCBracket_Click(object sender, EventArgs e)                          /*closeBracket                       */
         {                                                                                   /**/
-            txtScreen.Text += '(';                                                          /**/
+            txtScreen.Text += ')';                                                          /**/
         }                                                                                   /*___________________________________*/
         private void btnSmartFace_Click(object sender, EventArgs e)                         /*open "Command List" subform        */
         {                                                                                   /**/
