@@ -12,185 +12,167 @@ using org.mariuszgromada.math.mxparser;                                         
 
 namespace ParserCalculator                                                                  /*___________________________________*/
 {                                                                                           /**/
-    public partial class SmartCalculator : Form                                             /*Form Class                         */
+    public partial class SmartCalculator : Form                                             /*form class                         */
     {                                                                                       /**/
-        [DllImport("user32.dll")]                                                           /*Draggable window                   */
+        [DllImport("user32.dll")]                                                           /*draggable window                   */
         private static extern bool ReleaseCapture();                                        /**/
         [DllImport("user32.dll")]                                                           /**/
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wp, int lp);        /**/
         protected override void OnMouseDown(MouseEventArgs e)                               /**/
         {                                                                                   /**/
             base.OnMouseDown(e);                                                            /**/
-            if (e.Button == MouseButtons.Left) {                                            /**/
+            if (e.Button == MouseButtons.Left)                                              /**/
+            {                                                                               /**/
                 ReleaseCapture();                                                           /**/
                 SendMessage(Handle, 161, 2, 0);                                             /**/
             }                                                                               /**/
         }                                                                                   /**/
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]                         /*___________________________________*/
-        private static extern IntPtr CreateRoundRectRgn                                     /*Rounded corners on main form       */
-            (                                                                               /**/
+        private static extern IntPtr CreateRoundRectRgn(                                     /*rounded corners on main form       */
                 int nLeftRect,                                                              /**/
                 int nTopRect,                                                               /**/
                 int nRightRect,                                                             /**/
                 int nBottomRect,                                                            /**/
                 int nWidthEllipse,                                                          /**/
                 int nHeightEllipse                                                          /**/
-            );                                                                              /*___________________________________*/
-        private static readonly Timer Timer = new Timer();                                  /* Timer for Welcome Message         */
+            );                                                                              /*___________________________________*/                                                                                      
+        private static readonly Timer Timer = new Timer();                                  /*timer for welcome message         */
         public SmartCalculator()                                                            /*INIT                               */
         {                                                                                   /**/
             InitializeComponent();                                                          /**/
-            this.FormBorderStyle = FormBorderStyle.None;                                    /**/
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 10, 10));/**/
+            FormBorderStyle = FormBorderStyle.None;                                         /**/
+            Region = Region.FromHrgn(                                                       /**/
+                CreateRoundRectRgn(                                                         /**/
+                    0, 0,                                                                   /**/
+                    Width, Height,                                                          /**/
+                    10, 10                                                                  /**/
+                    )                                                                       /**/
+                );                                                                          /**/
             Timer.Tick += TimerEventProcessor;                                              /**/
             Timer.Interval = 3000;                                                          /**/
             Timer.Start();                                                                  /**/
-            String welcomeMsg = "Hello :)@Click the face!";                                 /*Timed welcome message              */
-            welcomeMsg = welcomeMsg.Replace("@", System.Environment.NewLine);               /**/
-            txtScreen.Text = welcomeMsg;                                                    /**/
+            txtScreen.Text = "Hello :)"+Environment.NewLine+"Click the face!";              /**/
         }                                                                                   /*___________________________________*/
-        private void TimerEventProcessor(object myObject, EventArgs myEventArgs)            /* Timed screen wipe                 */
+        private void TimerEventProcessor(object myObject, EventArgs myEventArgs)            /*timed screen wipe                 */
         {                                                                                   /**/
             Timer.Stop();                                                                   /**/
             txtScreen.Text = "";                                                            /**/
         }                                                                                   /*___________________________________*/
-        public void Enter_Click(object sender, EventArgs e)                                 /*Buttons and stuff                  */
+        public void Enter_Click(object sender, EventArgs e)                                 /*buttons and stuff                  */
         {                                                                                   /*___________________________________*/
-            Expression e1 = new Expression(txtScreen.Text);                                 /*Enter                              */
-            double Resultat = e1.calculate();                                               /**/
-            txtScreen.Text = Resultat.ToString();                                           /**/
+            Expression e1 = new Expression(txtScreen.Text);                                 /*enter                              */
+            txtScreen.Text = e1.calculate().ToString();                                     /**/
         }                                                                                   /*___________________________________*/
-        private void btnOne_Click(object sender, EventArgs e)                               /*One                                */
-        {                                                                                   /**/
-            double Eins = 1;                                                                /**/
-            txtScreen.Text += Eins.ToString();                                              /**/
+        private void btnOne_Click(object sender, EventArgs e)                               /*one                                */
+        {                                                                                   /**/                                                                /**/
+            txtScreen.Text += '1';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnTwo_Click(object sender, EventArgs e)                               /*Two                                */
+        private void btnTwo_Click(object sender, EventArgs e)                               /*two                                */
         {                                                                                   /**/
-            double Zwei = 2;                                                                /**/
-            txtScreen.Text += Zwei.ToString();                                              /**/
+            txtScreen.Text += '2';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnThree_Click(object sender, EventArgs e)                             /*Three                              */
+        private void btnThree_Click(object sender, EventArgs e)                             /*three                              */
         {                                                                                   /**/
-            double Drei = 3;                                                                /**/
-            txtScreen.Text += Drei.ToString();                                              /**/
+            txtScreen.Text += '3';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnFour_Click(object sender, EventArgs e)                              /*Four                               */
+        private void btnFour_Click(object sender, EventArgs e)                              /*four                               */
         {                                                                                   /**/
-            double Vier = 4;                                                                /**/
-            txtScreen.Text += Vier.ToString();                                              /**/
+            txtScreen.Text += '4';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnFive_Click(object sender, EventArgs e)                              /*Five                               */
+        private void btnFive_Click(object sender, EventArgs e)                              /*five                               */
         {                                                                                   /**/
-            double Fuenf = 5;                                                               /**/
-            txtScreen.Text += Fuenf.ToString();                                             /**/
+            txtScreen.Text += '5';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnSix_Click(object sender, EventArgs e)                               /*Six                                */
+        private void btnSix_Click(object sender, EventArgs e)                               /*six                                */
         {                                                                                   /**/
-            double Sechs = 6;                                                               /**/
-            txtScreen.Text += Sechs.ToString();                                             /**/
+            txtScreen.Text += '6';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnSeven_Click(object sender, EventArgs e)                             /*Seven                              */
+        private void btnSeven_Click(object sender, EventArgs e)                             /*seven                              */
         {                                                                                   /**/
-            double Sieben = 7;                                                              /**/
-            txtScreen.Text += Sieben.ToString();                                            /**/
+            txtScreen.Text += '7';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnEight_Click(object sender, EventArgs e)                             /*Eight                              */
+        private void btnEight_Click(object sender, EventArgs e)                             /*eight                              */
         {                                                                                   /**/
-            double Acht = 8;                                                                /**/
-            txtScreen.Text += Acht.ToString();                                              /**/
+            txtScreen.Text += '8';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnNine_Click(object sender, EventArgs e)                              /*Nine                               */
+        private void btnNine_Click(object sender, EventArgs e)                              /*nine                               */
         {                                                                                   /**/
-            double Neun = 9;                                                                /**/
-            txtScreen.Text += Neun.ToString();                                              /**/
+            txtScreen.Text += '9';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnZero_Click(object sender, EventArgs e)                              /*Zero                               */
+        private void btnZero_Click(object sender, EventArgs e)                              /*zero                               */
         {                                                                                   /**/
-            double Null = 0;                                                                /**/
-            txtScreen.Text += Null.ToString();                                              /**/
+            txtScreen.Text += '0';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnDot_Click(object sender, EventArgs e)                               /*Period                             */
+        private void btnDot_Click(object sender, EventArgs e)                               /*period                             */
         {                                                                                   /**/
-            String Dot = ".";                                                               /**/
-            txtScreen.Text += Dot;                                                          /**/
+            txtScreen.Text += '.';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnX_Click(object sender, EventArgs e)                                 /*X-Button                           */
+        private void btnX_Click(object sender, EventArgs e)                                 /*x-button                           */
         {                                                                                   /**/
-            String CharX = "x";                                                             /**/
-            txtScreen.Text += CharX;                                                        /**/
+            txtScreen.Text += 'x';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnDelete_Click(object sender, EventArgs e)                            /*Clear screen                       */
+        private void btnDivide_Click(object sender, EventArgs e)                            /*divide                             */
         {                                                                                   /**/
-            txtScreen.Text = "";                                                            /**/
+            txtScreen.Text += '/';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnBack_Click(object sender, EventArgs e)                              /*Delete last character              */
+        private void btnMultiply_Click(object sender, EventArgs e)                          /*multiply                           */
         {                                                                                   /**/
-            if (!String.IsNullOrEmpty(txtScreen.Text)) {                                    /**/
-                String txtScreenMinus1 = txtScreen.Text.Remove(txtScreen.Text.Length - 1, 1);/**/
-                txtScreen.Text = txtScreenMinus1;                                           /**/
-            }                                                                               /**/
+            txtScreen.Text += '*';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnDivide_Click(object sender, EventArgs e)                            /*Divide                             */
+        private void btnMinus_Click(object sender, EventArgs e)                             /*subtract                           */
         {                                                                                   /**/
-            String Divider = "/";                                                           /**/
-            txtScreen.Text += Divider;                                                      /**/
+            txtScreen.Text += '-';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnMultiply_Click(object sender, EventArgs e)                          /*Multiply                           */
+        private void btnPlus_Click(object sender, EventArgs e)                              /*add                                */
         {                                                                                   /**/
-            String Multiply = "*";                                                          /**/
-            txtScreen.Text += Multiply;                                                     /**/
+            txtScreen.Text += '+';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnMinus_Click(object sender, EventArgs e)                             /*Subtract                           */
+        private void btnOBracket_Click(object sender, EventArgs e)                          /*openBracket                        */
         {                                                                                   /**/
-            String Minus = "-";                                                             /**/
-            txtScreen.Text += Minus;                                                        /**/
+            txtScreen.Text += '(';                                                          /**/
         }                                                                                   /*___________________________________*/
-        private void btnPlus_Click(object sender, EventArgs e)                              /*Add                                */
+        private void btnCBracket_Click(object sender, EventArgs e)                          /*closeBracket                       */
         {                                                                                   /**/
-            String Plus = "+";                                                              /**/
-            txtScreen.Text += Plus;                                                         /**/
-        }                                                                                   /*___________________________________*/
-        private void btnOBracket_Click(object sender, EventArgs e)                          /*OpenBracket                        */
-        {                                                                                   /**/
-            String OBracket = "(";                                                          /**/
-            txtScreen.Text += OBracket;                                                     /**/
-        }                                                                                   /*___________________________________*/
-        private void btnCBracket_Click(object sender, EventArgs e)                          /*CloseBracket                       */
-        {                                                                                   /**/
-            String CBracket = ")";                                                          /**/
-            txtScreen.Text += CBracket;                                                     /**/
+            txtScreen.Text += '(';                                                          /**/
         }                                                                                   /*___________________________________*/
         private void btnSmartFace_Click(object sender, EventArgs e)                         /*open "Command List" subform        */
         {                                                                                   /**/
             var form = Application.OpenForms.OfType<formPopup>().FirstOrDefault();          /**/
             if (form != null) {                                                             /**/
                 form.Activate();                                                            /**/
-            }                                                                               /**/
-            else {                                                                          /**/
+            } else {                                                                        /**/
                 var formPopup = new formPopup();                                            /**/
                 formPopup.Show();                                                           /**/
             }                                                                               /**/
         }                                                                                   /*___________________________________*/
+        private void btnDelete_Click(object sender, EventArgs e)                            /*clear screen                       */
+        {                                                                                   /**/
+            txtScreen.Text = "";                                                            /**/
+        }                                                                                   /*___________________________________*/
+        private void btnBack_Click(object sender, EventArgs e)                              /*delete last character              */
+        {                                                                                   /**/
+            if (!String.IsNullOrEmpty(txtScreen.Text)) {                                    /**/
+                txtScreen.Text = txtScreen.Text.Substring(0, txtScreen.Text.Length - 1);    /**/
+            }                                                                               /**/
+        }                                                                                   /*___________________________________*/
         private void btnExit_Click(object sender, EventArgs e)                              /*exit button*/
         {                                                                                   /**/
-            this.Close();                                                                   /**/
+            Close();                                                                        /**/
         }                                                                                   /*___________________________________*/
         private void btnMinimize_Click(object sender, EventArgs e)                          /*minimize button*/
         {                                                                                   /**/
-            this.WindowState = FormWindowState.Minimized;                                   /**/
+            WindowState = FormWindowState.Minimized;                                        /**/
         }                                                                                   /*___________________________________*/
         private void updateCursor(object sender, EventArgs e)                               /*move cursor to end position*/
         {                                                                                   /**/
             txtScreen.Select(txtScreen.Text.Length, 0);                                     /**/
         }                                                                                   /*___________________________________*/
-        private void EnterPress(object sender, KeyEventArgs e)                              /*Enable enter key for calculation   */
+        private void EnterPress(object sender, KeyEventArgs e)                              /*enable enter key for calculation   */
         {                                                                                   /**/
             if (e.KeyCode == Keys.Return) {                                                 /**/
                 Expression e1 = new Expression(txtScreen.Text);                             /**/
-                double Resultat = e1.calculate();                                           /**/
-                txtScreen.Text = Resultat.ToString();                                       /**/
-                txtScreen.Select(txtScreen.Text.Length, 0);                                 /*____________________________________*/
+                txtScreen.Text = e1.calculate().ToString();                                 /**/
+                updateCursor(null, null);                                                   /*____________________________________*/
             }
         }
     }
